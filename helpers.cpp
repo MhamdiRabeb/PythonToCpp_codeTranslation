@@ -21,7 +21,36 @@
 
 using namespace std;
 
+/**
+	TODO - implement this function
 
+    Normalizes a grid of numbers. 
+
+    @param grid - a two dimensional grid (vector of vectors of floats)
+		   where each entry represents the unnormalized probability 
+		   associated with that grid cell.
+
+    @return - a new normalized two dimensional grid where the sum of 
+    	   all probabilities is equal to one.
+*/
+vector< vector<float> > normalize(vector< vector <float> > grid) {
+	
+	vector< vector<float> > newGrid (grid.size(), vector <float> (grid[0].size(),0));
+	double total = 0.0;
+  	// calculate the sum of the Grid of new beliefs' elements  
+  	for(int row=0; row<grid.size(); row++){
+      	for(int cell=0; cell<grid[0].size(); cell++){
+            total = total + grid[row][cell]; 
+  		}
+  	}
+	// new normalized grid is calculated by dividing probabilities by the total sum
+    for (int i = 0; i < grid.size(); i++) {
+       for (int j=0; j<grid[0].size();j++){
+         newGrid[i][j] = grid[i][j] / total;
+       }
+    }    
+	return newGrid;
+}
 
 /**
 	TODO - implement this function.
